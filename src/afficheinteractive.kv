@@ -1,0 +1,17 @@
+<ImageScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Image:
+            id: image_widget
+            allow_stretch: True
+            opacity: 0 if (self.source == '' or self.source is None) else 1
+
+<VideoScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Video:
+            id: video_widget
+            opacity: 1 if (self.state == 'play' and self.loaded) else 0
+            allow_stretch: True
+            # added options to make ffpyplayer working on hd screen and rpi
+            options: {'analyzeduration': 20000000, 'probesize': 20000000}

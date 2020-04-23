@@ -1,0 +1,10 @@
+{
+    "a": {"media_type": "video",  "src": "media/text.mp4"},
+    "z": {"media_type": "image",  "src": "media/len_full.jpg"},
+    "e": {"media_type": "sound",  "src": "media/yeah.mp3"},
+    "up": {"media_type": "sound",  "src": "media/ohno.mp3"},
+    "down": {"media_type": "image",  "src": "media/ada.jpg"},
+    "left": {"media_type": "video",  "src": "media/sample.mp4"},
+    "right": {"media_type": "video",  "src": "media/star_trails.mp4"},
+    "r": {"media_type": "image",  "src": "media/hud.png"}
+}
