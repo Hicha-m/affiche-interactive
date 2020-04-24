@@ -57,6 +57,9 @@ class MediaManager(Widget):
         Logger.info("Media: found {}".format(str(media)))
         if media is None:
             return
+        if not os.path.exists(media['src']):
+            Logger.warning("Media: file not found {}".format(str(media)))
+            return
         if media['media_type'] == 'video':
             if self.screen_manager.current == 'image':
                 self.image.clear_image()    
@@ -77,7 +80,8 @@ class MediaManager(Widget):
                 if self.sound.source != src:
                     self.sound.stop()
                     self.sound = SoundLoader.load(src)
-                    self.sound.play()
+                    if self.sound:
+                        self.sound.play()
                 elif self.sound.state == 'play':
                     self.sound.stop()
                 else:
