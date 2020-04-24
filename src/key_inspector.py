@@ -6,6 +6,10 @@
 
 """
 
+from kivy.config import Config
+Config.set('graphics', 'width', '400')
+Config.set('graphics', 'height', '200')
+
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.core.window import Window
