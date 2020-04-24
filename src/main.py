@@ -12,6 +12,7 @@ os.environ["KIVY_AUDIO"] = "sdl2"  # workaround for gstreamer bug on rpi3
 
 from kivy.config import Config
 Config.set("graphics", "fullscreen", "auto")
+Config.set("graphics", "show_cursor", "0")
 
 import json
 from kivy.app import App
@@ -94,12 +95,15 @@ class VideoScreen(Screen):
             wid.source = src
             wid.state = 'play'
         elif wid.state == 'play':
+            wid.seek(0)
             wid.state = 'stop'
         else:
+            wid.seek(0)
             wid.state = 'play'
         
     def stop_media(self):
         wid = self.get_video_widget()
+        wid.seek(0)
         wid.state = 'stop'
         
 
