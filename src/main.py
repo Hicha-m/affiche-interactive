@@ -127,7 +127,7 @@ class ImageScreen(Screen):
 Builder.load_file('afficheinteractive.kv')
 
 
-class TestApp(App):
+class AfficheApp(App):
 
     def build(self):
         self.media_manager = MediaManager()
@@ -143,4 +143,4 @@ class TestApp(App):
 
 
 if __name__ == '__main__':
-    TestApp().run()
+    AfficheApp().run()
