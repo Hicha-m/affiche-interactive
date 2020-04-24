@@ -6,6 +6,8 @@
 
 """
 
+__version__ = '0.9'
+
 import os
 os.environ["KIVY_VIDEO"] = "ffpyplayer"
 os.environ["KIVY_AUDIO"] = "sdl2"  # workaround for gstreamer bug on rpi3
