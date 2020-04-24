@@ -25,7 +25,7 @@ source.include_patterns = media/*
 #source.exclude_dirs = tests, bin
 
 # (list) List of exclusions using pattern matching
-#source.exclude_patterns = license,images/*/*.jpg,key_inspector.py
+#source.exclude_patterns = README.md,LICENSE,key_inspector.py,.gitignore
 
 # (str) Application versioning (method 1)
 # version = 0.1
