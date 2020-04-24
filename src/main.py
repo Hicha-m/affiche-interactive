@@ -9,6 +9,8 @@
 import os
 os.environ["KIVY_VIDEO"] = "ffpyplayer"
 
+from kivy.config import Config
+Config.set("graphics", "fullscreen", "auto")
 
 import json
 from kivy.app import App
