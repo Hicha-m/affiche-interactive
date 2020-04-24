@@ -7,7 +7,7 @@
 """
 
 import os
-# os.environ["KIVY_VIDEO"] = "ffpyplayer"
+os.environ["KIVY_VIDEO"] = "ffpyplayer"
 
 
 import json
@@ -75,14 +75,13 @@ class MediaManager(Widget):
                 else:
                     self.sound.play()
             
-        
 
 class VideoScreen(Screen):
     def get_video_widget(self):
         return self.ids['video_widget']
         
     def change_media(self, media):
-        src = media['src']
+        src = os.path.join(os.getcwd(), media['src'])
         wid = self.get_video_widget()
         if wid.source != src:
             wid.source = src
@@ -96,15 +95,13 @@ class VideoScreen(Screen):
         wid = self.get_video_widget()
         wid.state = 'stop'
         
-        
-
 
 class ImageScreen(Screen):
     def get_image_widget(self):
         return self.ids['image_widget']
         
     def change_media(self, media):
-        src = media['src']
+        src = os.path.join(os.getcwd(), media['src'])
         wid = self.get_image_widget()
         if wid.source != src:
             wid.source = src
