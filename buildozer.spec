@@ -13,7 +13,7 @@ package.domain = org.ob
 source.dir = ./src
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = key_inspector.py
+source.include_exts =
 
 # (list) List of inclusions using pattern matching
 source.include_patterns = media/*
@@ -25,7 +25,7 @@ source.include_patterns = media/*
 #source.exclude_dirs = tests, bin
 
 # (list) List of exclusions using pattern matching
-#source.exclude_patterns = license,images/*/*.jpg
+#source.exclude_patterns = license,images/*/*.jpg,key_inspector.py
 
 # (str) Application versioning (method 1)
 # version = 0.1
