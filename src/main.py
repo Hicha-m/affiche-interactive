@@ -17,6 +17,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.core.audio import SoundLoader
+from kivy.logger import Logger
 
 
 class MediaManager(Widget):
@@ -34,9 +35,11 @@ class MediaManager(Widget):
         if src is None:
             src = 'media/config.json'
         try:
+            Logger.info("Media Config: Loading file {}".format(src))
             with open(src, 'r') as f:
                 data = f.read()
             self.config = json.loads(data)
+            Logger.info("Media Config: Config Loaded -> {}".format(str(self.config)))
         except Exception as e:
             raise e
     
@@ -45,7 +48,9 @@ class MediaManager(Widget):
         self._keyboard = None
     
     def keyboard_callback(self, keyboard, keycode, text, modifiers):
+        Logger.info("Keyboard: Pressed {}".format(str(keycode)))
         media = self.config.get(keycode[1], None)
+        Logger.info("Media: found {}".format(str(media)))
         if media is None:
             return
         if media['media_type'] == 'video':
@@ -65,7 +70,6 @@ class MediaManager(Widget):
                 if self.sound:
                     self.sound.play()
             else:
-                print(self.sound.source)
                 if self.sound.source != src:
                     self.sound.stop()
                     self.sound = SoundLoader.load(src)
