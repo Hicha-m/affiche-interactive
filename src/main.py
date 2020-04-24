@@ -8,6 +8,7 @@
 
 import os
 os.environ["KIVY_VIDEO"] = "ffpyplayer"
+os.environ["KIVY_AUDIO"] = "sdl2"  # workaround for gstreamer bug on rpi3
 
 from kivy.config import Config
 Config.set("graphics", "fullscreen", "auto")
