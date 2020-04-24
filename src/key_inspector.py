@@ -46,7 +46,9 @@ BoxLayout:
 """
 
 
-class AfficheApp(App):
+class KeyInspectorApp(App):
+
+    title = 'Key Inspector'
 
     def build(self):
         self.keyboard_controller = KeyboardController(self)
@@ -55,4 +57,4 @@ class AfficheApp(App):
 
 
 if __name__ == '__main__':
-    AfficheApp().run()
+    KeyInspectorApp().run()
