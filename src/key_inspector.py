@@ -7,6 +7,7 @@
 """
 
 from kivy.config import Config
+Config.set('kivy', 'exit_on_escape', 0)
 Config.set('graphics', 'width', '400')
 Config.set('graphics', 'height', '200')
 
@@ -38,6 +39,7 @@ BoxLayout:
     orientation: 'vertical'
     Label:
         id : display_lbl
+        font_size: sp(15)
     Button:
         size_hint_y: None
         height: dp(40)
@@ -49,11 +51,15 @@ BoxLayout:
 class KeyInspectorApp(App):
 
     title = 'Key Inspector'
+    keyboard_controller = None
 
     def build(self):
         self.keyboard_controller = KeyboardController(self)
         root = Builder.load_string(kv_str)
         return root
+
+    def _on_keyboard_settings(self, window, *largs):
+        pass
 
 
 if __name__ == '__main__':
