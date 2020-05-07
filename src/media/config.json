@@ -1,11 +1,11 @@
 {
-    "e": {"media_type": "sound",  "src": "media/yeah.mp3"},
+    "e": {"media_type": "sound",  "src": "media/yeah.mp3", "loop": true},
     "r": {"media_type": "image",  "src": "media/hud.png"},
     "u": {"media_type": "video",  "src": "media/text.mp4"},
     "t": {"media_type": "image",  "src": "media/lena_polcorrect.jpg"},
     "y": {"media_type": "image",  "src": "media/Mona_Lisa.jpg"},
     "up": {"media_type": "sound",  "src": "media/ohno.mp3"},
     "down": {"media_type": "image",  "src": "media/ada.jpg"},
-    "left": {"media_type": "video",  "src": "media/sample.mp4"},
+    "left": {"media_type": "video",  "src": "media/sample.mp4", "loop": true},
     "right": {"media_type": "video",  "src": "media/star_trails.mp4"}
 }
