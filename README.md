@@ -28,6 +28,9 @@ le configuration par défaut (pour les exemples) est :
 * "left" (flèche gauche): video sample.mp4 (video + son)
 * "right" (flèche droite): video star_trails.mp4 (1280x720)
 
+## Attention
+* Pour les vidéos sur un raspberry pi3b/pi3b+, ne pas dépasser 1280x720 pour les mp4.
+
 ## fichiers supplémentaires
 
 * un fichier d'installation de kivy pour le rpi3
