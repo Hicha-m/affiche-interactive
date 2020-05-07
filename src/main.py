@@ -6,7 +6,7 @@
 
 """
 
-__version__ = '0.9'
+__version__ = '0.95'
 
 # Kivy : set providers for audio and video
 # with env vars
