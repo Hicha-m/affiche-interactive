@@ -36,3 +36,6 @@
 
             # added options to make ffpyplayer working on hd screen and rpi
             options: {'analyzeduration': 20000000, 'probesize': 20000000}
+
+            # what to do on eos (end of stream) -> loop is True in the video stream then rewind
+            on_eos: root.on_eos_loop()
