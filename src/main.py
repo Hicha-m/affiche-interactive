@@ -3,6 +3,7 @@
     Affiche interactive 
         Idée Originale: Damien Muti
         Code : Olivier Boesch
+    version 0.95 : added loop
 
 """
 
