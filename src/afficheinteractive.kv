@@ -1,17 +1,38 @@
+#  -----------------------------
+#  This file defines the layout for the two screens
+#  -----------------------------
+
+# ui layout for the image screen
 <ImageScreen>:
     BoxLayout:
-        orientation: 'vertical'
+        orientation: 'vertical'  # item are arranged from top to bottom
+
         Image:
-            id: image_widget
-            allow_stretch: True
+            id: image_widget  # id to get a reference in the ids dictionary
+
+            allow_stretch: True  # image can be greater than the original
+
+            # a little logic for opacity :
+            # widget is shown (opacity=1) only if there is an image to display
+            # otherwise we hide it (opacity=0)
             opacity: 0 if (self.source == '' or self.source is None) else 1
 
+# ui layout for the video screen
 <VideoScreen>:
     BoxLayout:
-        orientation: 'vertical'
+        orientation: 'vertical'  # item are arranged from top to bottom
+        size_hint: 1,1
+        pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+
         Video:
-            id: video_widget
+            id: video_widget  # id to get a reference in the ids dictionary
+
+            # a little logic for opacity :
+            # widget is shown (opacity=1) only if there is a video loaded an playing
+            # otherwise we hide it (opacity=0)
             opacity: 1 if (self.state == 'play' and self.loaded) else 0
-            allow_stretch: True
+
+            allow_stretch: True  # video can be greater than the original
+
             # added options to make ffpyplayer working on hd screen and rpi
             options: {'analyzeduration': 20000000, 'probesize': 20000000}
