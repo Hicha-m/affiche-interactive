@@ -26,7 +26,7 @@ le configuration par défaut (pour les exemples) est :
 * "up" (flèche haut): son ohno.mp3
 * "down" (flèche bas): ada.jpg (un autre légende)
 * "left" (flèche gauche): video sample.mp4 (video + son)
-* "right" (flèche droite): video star_trails.mp4 (1280x1024)
+* "right" (flèche droite): video star_trails.mp4 (1280x720)
 
 ## fichiers supplémentaires
 
