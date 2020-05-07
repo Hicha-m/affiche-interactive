@@ -29,6 +29,7 @@ from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.core.audio import SoundLoader
 from kivy.logger import Logger
+from kivy.properties import BooleanProperty
 
 
 class MediaManager(Widget):
@@ -94,13 +95,15 @@ class MediaManager(Widget):
             return
         # medium found is a video
         if media['media_type'] == 'video':
+            # get the loop parameter in config
+            loop = media.get("loop", False)
             # clear if an image is displayed
             if self.screen_manager.current == 'image':
                 self.image.clear_image()
             # switch to video screen
             self.screen_manager.current = 'video'
             # give medium path to the video screen
-            self.video.change_media(media)
+            self.video.change_media(media, loop)
         # medium found is an image
         elif media['media_type'] == 'image':
             # stop if a video is displayed
@@ -112,6 +115,8 @@ class MediaManager(Widget):
             self.image.change_media(media)
         # medium found is a sound
         elif media['media_type'] == 'sound':
+            # get the loop parameter in config
+            loop = media.get("loop", False)
             # get absolute path
             src = os.path.join(os.getcwd(), media['src'])
             # if no sound was loaded -> try load it directly
@@ -120,6 +125,7 @@ class MediaManager(Widget):
                 # if it is loaded -> play it
                 if self.sound:
                     self.sound.play()
+                    self.sound.loop = loop
             # there was already a sound loaded
             else:
                 # if it's not the same -> stop it, try load the new one then play it
@@ -128,6 +134,7 @@ class MediaManager(Widget):
                     self.sound = SoundLoader.load(src)
                     if self.sound:
                         self.sound.play()
+                        self.sound.loop = loop
                 # it's the same as before -> toggle state play/pause
                 elif self.sound.state == 'play':
                     self.sound.stop()
@@ -138,14 +145,30 @@ class MediaManager(Widget):
 class VideoScreen(Screen):
     """VideoScreen: display videos"""
     # TODO: make seek correctly work as play after stop doesn't show the image (no rewind)
+    # should we loop the video ?
+    loop = BooleanProperty(False)
+
     def get_video_widget(self):
         """get_video_widget: return video widget"""
         return self.ids['video_widget']
+
+    def on_eos_loop(self):
+        """on_eos_loop: what to do on eos (end of stream)"""
+        wid = self.get_video_widget()
+        Logger.info("Video: {} end of stream".format(wid.source))
+        if self.loop:
+            wid = self.get_video_widget()
+            wid.seek(0)
+            wid.state = 'play'
+            Logger.info("Video: {} looping".format(wid.source))
         
-    def change_media(self, media):
+    def change_media(self, media, loop):
         """change_media: change media source to new one or toggle state of the current one
             args :
                 media : current medium relative path to the app directory"""
+
+        # should we loop this video ?
+        self.loop = loop
         # get absolute path
         src = os.path.join(os.getcwd(), media['src'])
         # get video widget
