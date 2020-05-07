@@ -17,7 +17,7 @@ os.environ["KIVY_AUDIO"] = "sdl2"  # workaround for gstreamer bug on rpi3
 # Kivy : set specific config
 # app fullscreen and don't show cursor
 from kivy.config import Config
-Config.set("graphics", "fullscreen", "auto")
+# Config.set("graphics", "fullscreen", "auto")
 Config.set("graphics", "show_cursor", "0")
 
 # kivy imports
@@ -38,10 +38,10 @@ class MediaManager(Widget):
     def __init__(self, config_file=None, **kwargs):
         """Class init"""
         super().__init__(**kwargs)
+        self.config = {}
         self.load_config_file(config_file)
         self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
         self._keyboard.bind(on_key_down=self.keyboard_callback)
-        self.config = {}
         self.sound = None
         self.video = None
         self.image = None
@@ -226,6 +226,10 @@ class AfficheApp(App):
         self.media_manager.screen_manager = sm
         # return the root widget for display
         return sm
+
+    def _on_keyboard_settings(self, window, *largs):
+        """overridden function to prevent F1 key from displaying settings"""
+        pass
 
 
 # if this file is the main file -> launch the app
