@@ -127,13 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/.buildozer/
-Supprimerait .idea/.gitignore
-Supprimerait .idea/affiche-interactive.iml
-Supprimerait .idea/inspectionProfiles/
-Supprimerait .idea/misc.xml
-Supprimerait .idea/modules.xml
-Supprimerait .idea/vcs.xml
-Supprimerait bin/
-/bin/
-!/bin/
+!/build_android/bin/
+!/build_android/.buildozer/
