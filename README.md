@@ -17,15 +17,20 @@ les fichiers media et de configuration sont dans le dossier [media](https://gith
 
 l'association touche <-> media se fait dans le fichier [config.json](https://github.com/olivier-boesch/affiche-interactive/blob/master/src/media/config.json)
 
+pour chaque touche définie, on peut donner les paramètres:
+    media_type : type de medium (sound,video,image)
+    src: chemin relatif au répertoire principal
+    loop : valable pour les sons et les videos. doit-on le jouer en boucle ?
+
 le configuration par défaut (pour les exemples) est :
-* "e" son yeah.mp3
+* "e" son yeah.mp3 (loop on)
 * "r": image hud.png
 * "u": video text.mp4 (1280x720)
 * "t": image lena_polcorrect.jpg (la légende...)
 * "y": image Mona_Lisa.jpg
 * "up" (flèche haut): son ohno.mp3
 * "down" (flèche bas): ada.jpg (un autre légende)
-* "left" (flèche gauche): video sample.mp4 (video + son)
+* "left" (flèche gauche): video sample.mp4 (video + son) (loop on)
 * "right" (flèche droite): video star_trails.mp4 (1280x720)
 
 ## Attention
